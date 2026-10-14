@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="create-account-container">
+      <div class="row create-account">
+        <div
+          class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center crypto-container p-5"
+        >
+          <div class="d-flex justify-content-center">
+            <h1 class="crypto-text">CV</h1>
+          </div>
+          <div>
+            <h1 class="text-center">CryptoVault</h1>
+          </div>
+          <div>
+            <p class="text-center rewards-grade">
+              Your secure gateway to the world of cryptocurrency trading and
+              portfolio management
+            </p>
+          </div>
+          <div
+            class="d-flex justify-content-center align-items-center gap-3 mt-4"
+          >
+            <div class="rewards">
+              <i class="bi bi-shield"></i>
+            </div>
+            <div class="mt-3">
+              <p class="rewards-grade">
+                Bank-grade security with 2FA protection
+              </p>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center align-items-center gap-3">
+            <div class="rewards">
+              <i class="bi bi-activity"></i>
+            </div>
+            <div class="mt-3">
+              <p class="rewards-grade">
+                Real-time market data analytics rewards
+              </p>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center align-items-center gap-3">
+            <div class="rewards">
+              <i class="bi bi-credit-card"></i>
+            </div>
+            <div class="mt-3">
+              <p class="rewards-grade">
+                Multiwallet support with staking rewards
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-12 col-md-6 bg-black p-1 p-md-3"
+          id="create-account-container"
+        >
+          <h3 class="text-center text-white pt-4">Create Account</h3>
+          <p class="text-gray text-center">Start your crypto journey today</p>
+          <div class="d-flex justify-content-center">
+            <div
+              class="d-flex white-smoke sign-in gap-4 border-none rounded p-2 w-75"
+            >
+              <button
+                class="btn btn-lg menu-link w-50 text-white"
+                onclick="signIn()"
+              >
+                Sign In
+              </button>
+              <button
+                class="btn btn-lg menu-link active text-white w-50"
+                onclick="signUp()"
+              >
+                Sign Up
+              </button>
+            </div>
+          </div>
+          <div class="p-4 p-md-5">
+            <form onsubmit="createAccount(event)">
+              <label for="name" class="form-label text-white">Full Name</label>
+              <div class="crypto-form">
+                <input
+                  type="text"
+                  class="form-control search text-white mb-2 py-4 px-5"
+                  name="name"
+                  pattern="[A-Za-z ]+"
+                  id="user-name"
+                  placeholder="Enter Your full name"
+                  required
+                />
+                <div class="crypto-form-icon">
+                  <i class="bi bi-envelope text-gray"></i>
+                </div>
+              </div>
+              <label for="email" class="form-label text-white"
+                >Email Address</label
+              >
+              <div class="crypto-form">
+                <input
+                  type="email"
+                  class="form-control search text-white mb-3 py-4 px-5"
+                  pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                  title="please enter correct email"
+                  name="email"
+                  id="signIn-email"
+                  placeholder="Enter Your Email"
+                  required
+                />
+                <div class="crypto-form-icon">
+                  <i class="bi bi-envelope text-gray"></i>
+                </div>
+              </div>
+              <label for="password" class="form-label text-white"
+                >Password</label
+              >
+              <div class="crypto-form">
+                <input
+                  type="password"
+                  class="form-control search text-white mb-3 py-4 px-5"
+                  pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,}"
+                  title="Use 8+ characters with uppercase, lowercase, number and symbol"
+                  name="password"
+                  id="signIn-password"
+                  placeholder="Create a Password"
+                  required
+                />
+                <div class="crypto-form-icon">
+                  <i class="bi bi-lock text-gray"></i>
+                </div>
+                <div class="crypto-eye-icon">
+                  <i
+                    class="bi bi-eye-slash"
+                    id="eye-icon"
+                    onclick="showSignInEyeIcon()"
+                  ></i>
+                </div>
+              </div>
+              <p class="text-gray">
+                Use 8+ characters with a mix of letters, numbers & symbols
+              </p>
+              <div class="d-flex justify-content-between">
+                <div class="text-gray">
+                  <input
+                    type="checkbox"
+                    class="form-checkbox"
+                    name="check-box"
+                    id="check-box"
+                    required
+                  />
+                  I agree to the
+                  <span style="color: #c27d3c">Terms of Service</span> and
+                  <span style="color: #c27d3c">Privacy Policy</span>
+                </div>
+              </div>
+              <button type="submit" class="btn copy-btn w-100 mb-2 fs-5 my-3">
+                Create Account
+              </button>
+            </form>
+            <p class="text-gray text-center continue-dash">
+              ___________ or continue with________________
+            </p>
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <div class="card card-white mb-3">
+                  <div
+                    class="d-flex gap-3 justify-content-center align-items-center text-white"
+                  >
+                    <div>
+                      <img
+                        src="./images/google-3.png"
+                        alt="Google"
+                        width="20"
+                      />
+                    </div>
+                    <div
+                      class="d-flex justify-content-center align-items-center"
+                    >
+                      <p class="mt-3 text-white">Google</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="card card-white mb-3">
+                  <div
+                    class="d-flex justify-content-center gap-3 align-items-center text-white"
+                  >
+                    <div>
+                      <i class="bi bi-apple"></i>
+                    </div>
+                    <div
+                      class="d-flex justify-content-center align-items-center text-white"
+                    >
+                      <p class="mt-3 text-white">Apple</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-center mt-3 text-white">
+                Don't have an account? Sign up for free
+              </p>
+              <p class="text-center text-gray">
+                Copyright © 2026 CryptoVault. Designed by TemplateMo
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-12 col-md-6 bg-black text-white p-1 p-md-5 account-container"
+          id="account-container"
+        >
+          <h1 class="text-center my-5">Success!</h1>
+          <div
+            class="d-flex flex-column justify-content-center align-items-center"
+          >
+            <p class="confirm-icon"><i class="bi bi-check2"></i></p>
+            <p class="fs-4">Account Created!</p>
+            <p class="fs-5 text-gray text-center">
+              Check your email to verify your account and get started with
+              CryptoVault.
+            </p>
+            <button
+              class="btn btn-lg copy-btn text-dark mt-5"
+              onclick="dashboard()"
+            >
+              Go to Dashboard
+            </button>
+          </div>
+          <p class="mt-5 text-center text-gray">
+            Copyright © 2026 CryptoVault. Designed by <br /><span
+              style="color: #c27d3c"
+              >TemplateMo</span
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="./script.js"></script>
+</html>

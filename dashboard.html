@@ -1,0 +1,695 @@
+<!-- https://templatemo.com/live/templatemo_609_crypto_vault -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <button
+        class="btn btn-dark toggle-btn"
+        type="button"
+        id="toggle-btn"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#sidebar"
+        aria-controls="sidebar"
+        onclick="togbtn()"
+      >
+        <i class="bi bi-list fs-3"></i>
+      </button>
+      <div
+        class="offcanvas offcanvas-start"
+        id="sidebar"
+        data-bs-scroll="true"
+        data-bs-backdrop="false"
+        tabindex="-1"
+        aria-labelledby="offcanvasScrollingLabel"
+      >
+        <div class="offcanvas-body canvas-content">
+          <div class="d-flex justify-content-between align-items-center fs-5">
+            <div class="offcanvas-title d-flex align-items-center gap-2">
+              <h5 class="cv-text">CV</h5>
+              <h5 class="fs-4">Cryptovault</h5>
+            </div>
+            <button
+              type="button"
+              class="btn-close close-button bg-white"
+              data-bs-dismiss="offcanvas"
+              id="close-btn"
+              onclick="closeBtn()"
+              aria-label="Close"
+            ></button>
+          </div>
+          <p class="my-5">MAIN CONTENT</p>
+          <div
+            class="d-flex align-items-center btn border-none menu-link active gap-3 mb-3"
+            onclick="dashboard()"
+          >
+            <div>
+              <i class="bi bi-grid-3x3-gap-fill text-white fs-5"></i>
+            </div>
+            <div>
+              <p class="fs-5 text-white mb-0 dashboard-sidebar">Dashboard</p>
+            </div>
+          </div>
+          <div
+            class="d-flex align-items-center btn border-none menu-link gap-3 mb-3"
+            id="markets"
+            onclick="markets()"
+          >
+            <div>
+              <i class="bi bi-activity fs-5 text-white"></i>
+            </div>
+            <div>
+              <p class="fs-5 text-white mb-0 dashboard-sidebar">Markets</p>
+            </div>
+          </div>
+
+          <div
+            class="d-flex align-items-center btn menu-link gap-3 mb-3"
+            id="wallets"
+            onclick="wallets()"
+          >
+            <div>
+              <i class="bi bi-credit-card fs-5 text-white"></i>
+            </div>
+            <div>
+              <p class="fs-5 text-white mb-0 dashboard-sidebar">Wallets</p>
+            </div>
+          </div>
+          <p class="mt-4">DASHBOARD ACCOUNT</p>
+          <div
+            class="d-flex align-items-center btn menu-link gap-3 mt-4"
+            id="settings"
+            onclick="settings()"
+          >
+            <div>
+              <i class="bi bi-gear fs-5 text-white"></i>
+            </div>
+            <div>
+              <p class="fs-5 text-white mb-0 dashboard-sidebar">Settings</p>
+            </div>
+          </div>
+          <hr />
+          <div
+            class="d-flex btn dash-btn justify-content-between align-items-center mb-4"
+          >
+            <div class="d-flex gap-3 align-items-center">
+              <div>
+                <i class="bi bi-sun fs-5 text-white"></i>
+              </div>
+              <div class="d-flex fs-5 align-items-center">
+                <p class="text-white">Light <br />Mode</p>
+              </div>
+            </div>
+            <div class="form-check form-switch">
+              <input
+                class="form-check-input fs-3"
+                type="checkbox"
+                id="themeToggle"
+                onclick="lightmode()"
+              />
+            </div>
+          </div>
+          <div
+            class="d-flex align-items-center btn menu-link logout-btn gap-3 mb-3"
+            id="logout"
+            onclick="logout()"
+          >
+            <div>
+              <i class="bi bi-box-arrow-right logout-text fs-5 text-white"></i>
+            </div>
+            <div>
+              <p class="fs-5 text-white mb-0 dashboard-sidebar">Logout</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="dashboard-section p-0 p-md-4">
+        <div
+          class="dashboard-container d-flex flex-column flex-lg-row justify-content-between text-white mt-5 mt-md-0 pt-3 p-2"
+        >
+          <div>
+            <h3>Dashboard</h3>
+            <p class="text-mute">
+              Welcome back! Here's your portfolio overview.
+            </p>
+          </div>
+          <div class="d-flex align-items-center gap-5">
+            <input
+              type="text"
+              name="text"
+              id="sidebar-search"
+              class="search text-white p-4"
+              placeholder="search"
+            />
+            <div class="d-flex align-items-center">
+              <i class="bi bi-bell-fill rounded fs-2 p-2 bell"></i>
+            </div>
+            <div class="d-flex align-items-center gap-3 morgan p-2">
+              <div>
+                <p class="am-text" id="initial-text">AM</p>
+              </div>
+              <div class="alex-trader">
+                <span id="alex-name-change">Alex Morgan</span><br />
+                <span class="text-mute">Pro Trader</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="portfolio-container">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <div class="card p-2 portfolio-card mb-3">
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <h3>Portfolio</h3>
+                    </div>
+                    <div class="d-flex p-2 gap-3">
+                      <p>1D</p>
+                      <p>1W</p>
+                      <p>1M</p>
+                      <p>1Y</p>
+                    </div>
+                  </div>
+                  <div class="line-chart">
+                    <div class="lines">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+                    <svg viewBox="0 0 500 220">
+                      <polygon
+                        points="30,130 95,115 160,85 225,95 290,65 355,75 420,45 420,180 30,180"
+                        fill="rgba(184,115,51,0.20)"
+                      />
+                      <polyline
+                        points="30,130 95,115 160,85 225,95 290,65 355,75 420,45"
+                        fill="none"
+                        stroke="#b87333"
+                        stroke-width="3"
+                      />
+                      <circle cx="30" cy="130" r="4" fill="#b87333" />
+                      <circle cx="95" cy="115" r="4" fill="#b87333" />
+                      <circle cx="160" cy="85" r="4" fill="#b87333" />
+                      <circle cx="225" cy="95" r="4" fill="#b87333" />
+                      <circle cx="290" cy="65" r="4" fill="#b87333" />
+                      <circle cx="355" cy="75" r="4" fill="#b87333" />
+                      <circle cx="420" cy="45" r="4" fill="#b87333" />
+                    </svg>
+                  </div>
+                  <div class="days">
+                    <span>Mon</span>
+                    <span>Tue</span>
+                    <span>Wed</span>
+                    <span>Thu</span>
+                    <span>Fri</span>
+                    <span>Sat</span>
+                    <span>Sun</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card p-4 asset-performance">
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <h3>Asset Performance</h3>
+                    </div>
+                    <div class="d-flex p-2 gap-3">
+                      <p>Week</p>
+                      <p>Month</p>
+                      <p>Year</p>
+                    </div>
+                  </div>
+                  <div class="bars">
+                    <div class="bar green green1" style="height: 80px">
+                      <div class="percent">
+                        <p>+8.2%</p>
+                      </div>
+                      <div class="asset asset-1">
+                        <p>BTC</p>
+                      </div>
+                    </div>
+                    <div class="bar green green2" style="height: 65px">
+                      <div class="percent">
+                        <p>+6.5%</p>
+                      </div>
+                      <div class="asset asset-2">
+                        <p>eth</p>
+                      </div>
+                    </div>
+                    <div class="bar orange orange1" style="height: 20px">
+                      <div class="percent">
+                        <p>+0.1%</p>
+                      </div>
+                      <div class="asset asset-3">
+                        <p>usdt</p>
+                      </div>
+                    </div>
+                    <div class="bar green green3" style="height: 95px">
+                      <div class="percent">
+                        <p>+12.4%</p>
+                      </div>
+                      <div class="asset asset-4">
+                        <p>sol</p>
+                      </div>
+                    </div>
+                    <div class="bar orange orange2" style="height: 45px">
+                      <div class="percent">
+                        <p>+2.8%</p>
+                      </div>
+                      <div class="asset asset-5">
+                        <p>BNB</p>
+                      </div>
+                    </div>
+                    <div class="bar orange orange3" style="height: 38px">
+                      <div class="percent">
+                        <p>+1.9%</p>
+                      </div>
+                      <div class="asset asset-6">
+                        <p>ADA</p>
+                      </div>
+                    </div>
+                    <div class="bar red" style="height: 30px">
+                      <div class="percent">
+                        <p>-1.2%</p>
+                      </div>
+                      <div class="asset asset-7">
+                        <p>XRP</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container allocation-container">
+          <div class="row p-3">
+            <div class="col-12 col-md-4 p-3">
+              <div class="card">
+                <div class="card-body p-3 p-md-3">
+                  <h3 class="mb-4">Asset Allocation</h3>
+                  <div class="asset-allocation-container">
+                    <div class="allocation-circle"></div>
+                    <div class="allocation-percent">
+                      <ul>
+                        <li class="btc-percent">BTC 40%</li>
+                        <li class="eth-percent">ETH 25%</li>
+                        <li class="usdt-percent">USDT 20%</li>
+                        <li class="other-percent">Other 15%</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 p-3">
+              <div class="card">
+                <div class="card-body p-3 p-md-3">
+                  <h3 class="mb-4">Portfolio Health</h3>
+                  <div class="half-circle">
+                    <div class="first-half first-circle"></div>
+                    <div class="dot"></div>
+                  </div>
+                  <div class="text-center">
+                    <h3>85%</h3>
+                    <p style="color: gray">Excellent</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 p-3">
+              <div class="card">
+                <div class="card-body p-3 p-md-3">
+                  <h3 class="mb-4">Risk Level</h3>
+                  <div class="half-circle">
+                    <div class="second-half first-circle"></div>
+                    <div class="dot"></div>
+                  </div>
+                  <div class="text-center">
+                    <h3>35%</h3>
+                    <p style="color: gray">Moderate</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="orders-card mt-4">
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <div class="card copy-icon mb-3">
+                  <div
+                    class="card-body balance d-flex align-items-center p-3 gap-3"
+                  >
+                    <div class="balance-icons">
+                      <i class="bi bi-currency-dollar"></i>
+                    </div>
+                    <div class="balance">
+                      <p class="text-dark mb-1">Total Balance</p>
+                      <h3>$84,254.32</h3>
+                      <p class="text-dark">+12.5% this month</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="card copy-icon mb-3">
+                  <div class="card-body d-flex align-items-center p-3 gap-3">
+                    <div class="order-icons">
+                      <i class="bi bi-layers"></i>
+                    </div>
+                    <div class="orders">
+                      <p class="mb-1">Total</p>
+                      <h3>$12,847.00</h3>
+                      <p>+8.2% vs last week</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="card copy-icon mb-3">
+                  <div class="card-body d-flex align-items-center p-3 gap-3">
+                    <div class="order-icons">
+                      <i class="bi bi-graph-up-arrow"></i>
+                    </div>
+                    <div class="orders">
+                      <p class="mb-1">Pending Orders</p>
+                      <h3>7</h3>
+                      <p>3 buy, 4 sell</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="card copy-icon">
+                  <div class="card-body d-flex align-items-center p-3 gap-3">
+                    <div class="order-icons">
+                      <i class="bi bi-clock"></i>
+                    </div>
+                    <div class="orders">
+                      <p class="mb-1">Active Assets</p>
+                      <h3>12</h3>
+                      <p>Across 4 wallets</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container transaction-container">
+          <div class="row py-4">
+            <div class="col-12 col-md-6">
+              <div class="card recent-card mb-3 py-2">
+                <div
+                  class="card-body d-flex justify-content-between align-items-center p-2"
+                >
+                  <h3>Recent Transactions</h3>
+                  <a href="#" class="text-decoration-none text-white"
+                    >View All</a
+                  >
+                </div>
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="d-flex transactions gap-3 align-items-center">
+                      <div class="transaction-graph">
+                        <i class="bi bi-graph-up"></i>
+                      </div>
+                      <div>
+                        <span>Buy BTC</span><br />
+                        <span>Today, 2:45 PM</span>
+                      </div>
+                    </div>
+                    <div>
+                      <p class="fw-bold" style="color: rgb(56, 117, 56)">
+                        +0.0234 BTC
+                      </p>
+                    </div>
+                  </div>
+                  <hr />
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="d-flex transactions gap-3 align-items-center">
+                      <div class="transaction-arrow">
+                        <i class="bi bi-graph-up-arrow"></i>
+                      </div>
+                      <div>
+                        <span>Sell ETH </span><br />
+                        <span>Today, 11:25 PM</span>
+                      </div>
+                    </div>
+                    <div>
+                      <p class="fw-bold" style="color: rgb(160, 80, 80)">
+                        +0.0234 BTC
+                      </p>
+                    </div>
+                  </div>
+                  <hr />
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="d-flex transactions gap-3 align-items-center">
+                      <div class="transaction-repeat">
+                        <i class="bi bi-repeat"></i>
+                      </div>
+                      <div>
+                        <span>Transfer USDT</span><br />
+                        <span>Yesterday</span>
+                      </div>
+                    </div>
+                    <div>
+                      <p>+0.0234 BTC</p>
+                    </div>
+                  </div>
+                  <hr />
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="d-flex transactions gap-3 align-items-center">
+                      <div class="transaction-graph">
+                        <i class="bi bi-graph-up"></i>
+                      </div>
+                      <div>
+                        <span>By SOL</span><br />
+                        <span>Today, 2:45 PM</span>
+                      </div>
+                    </div>
+                    <div>
+                      <p class="fw-bold" style="color: rgb(56, 117, 56)">
+                        +0.0234 BTC
+                      </p>
+                    </div>
+                  </div>
+                  <hr />
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="card p-3">
+                <div
+                  class="card-body d-flex justify-content-between align-items-center p-3"
+                >
+                  <h3>Top Movers</h3>
+                  <div class="top-movers">
+                    <button class="btn">Gainers</button>
+                    <button class="btn">Losers</button>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="d-flex justify-content-between">
+                    <div class="d-flex gap-3">
+                      <p class="mover-num">1</p>
+                      <p class="mover-logo logo-color-1">◎</p>
+                      <div>
+                        <span>Solana</span><br />
+                        <span style="color: gray">SOL</span>
+                      </div>
+                    </div>
+                    <div>
+                      <span>$98.42</span><br />
+                      <span style="color: gray">12.4%</span>
+                    </div>
+                  </div>
+                  <hr />
+                  <div class="d-flex justify-content-between">
+                    <div class="d-flex gap-3">
+                      <p class="mover-num">2</p>
+                      <p class="mover-logo logo-color-2">Ð</p>
+                      <div>
+                        <span>Dogecoin</span><br />
+                        <span style="color: gray">DOGE</span>
+                      </div>
+                    </div>
+                    <div>
+                      <span>$0.082</span><br />
+                      <span style="color: gray">+8.5%</span>
+                    </div>
+                  </div>
+                  <hr />
+                  <div class="d-flex justify-content-between">
+                    <div class="d-flex gap-3">
+                      <p class="mover-num">3</p>
+                      <p class="mover-logo logo-color-3">₿</p>
+                      <div>
+                        <span>Bitcoin</span><br />
+                        <span style="color: gray">BTC</span>
+                      </div>
+                    </div>
+                    <div>
+                      <span>$43,256</span><br />
+                      <span style="color: gray">+8.2%</span>
+                    </div>
+                  </div>
+                  <hr />
+                  <div class="d-flex justify-content-between">
+                    <div class="d-flex gap-3">
+                      <p class="mover-num">4</p>
+                      <p class="mover-logo logo-color-4">Ξ</p>
+                      <div>
+                        <span>Ethereum</span><br />
+                        <span style="color: gray">ETH</span>
+                      </div>
+                    </div>
+                    <div>
+                      <span>$2,284 </span><br />
+                      <span style="color: gray">+6.5% </span>
+                    </div>
+                  </div>
+                  <hr />
+                  <div class="d-flex justify-content-between">
+                    <div class="d-flex gap-3">
+                      <p class="mover-num">5</p>
+                      <p class="mover-logo logo-color-5">₳</p>
+                      <div>
+                        <span>Cardano</span><br />
+                        <span style="color: gray">ADA</span>
+                      </div>
+                    </div>
+                    <div>
+                      <span>$0.52</span><br />
+                      <span style="color: gray">+5.1%</span>
+                    </div>
+                  </div>
+                  <hr />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="col p-4">
+            <div class="card">
+              <div class="card-bod p-3">
+                <div class="d-flex justify-content-between">
+                  <h3>Watchlist</h3>
+                  <button class="btn add-btn">+ Add</button>
+                </div>
+                <div class="card-body">
+                  <div class="d-flex justify-content-between">
+                    <div class="d-flex gap-3">
+                      <p class="mover-logo logo-color-3">₿</p>
+                      <div>
+                        <span>Bitcoin</span><br />
+                        <span style="color: gray">BTC</span>
+                      </div>
+                    </div>
+                    <div>
+                      <span>$43,256</span><br />
+                      <span style="color: gray">+8.2%</span>
+                    </div>
+                  </div>
+                  <hr />
+                  <div class="d-flex justify-content-between">
+                    <div class="d-flex gap-3">
+                      <p class="mover-logo logo-color-4">Ξ</p>
+                      <div>
+                        <span>Ethereum</span><br />
+                        <span style="color: gray">ETH</span>
+                      </div>
+                    </div>
+                    <div>
+                      <span>$2,284 </span><br />
+                      <span style="color: gray">+6.5% </span>
+                    </div>
+                  </div>
+                  <hr />
+                  <div class="d-flex justify-content-between">
+                    <div class="d-flex gap-3">
+                      <p class="mover-logo logo-color-6">✕</p>
+                      <div>
+                        <span>XRP</span><br />
+                        <span style="color: gray">XRP</span>
+                      </div>
+                    </div>
+                    <div>
+                      <span>$0.62 </span><br />
+                      <span style="color: rgb(143, 96, 96)">-1.24%</span>
+                    </div>
+                  </div>
+                  <hr />
+                  <div class="d-flex justify-content-between">
+                    <div class="d-flex gap-3">
+                      <p class="mover-logo logo-color-2">Ð</p>
+                      <div>
+                        <span>Dogecoin</span><br />
+                        <span style="color: gray">DOGE</span>
+                      </div>
+                    </div>
+                    <div>
+                      <span>$0.082</span><br />
+                      <span style="color: gray">+8.5%</span>
+                    </div>
+                  </div>
+                  <hr />
+                  <div class="d-flex justify-content-between">
+                    <div class="d-flex gap-3">
+                      <p class="mover-logo logo-color-7">●</p>
+                      <div>
+                        <span>Palkadot</span><br />
+                        <span style="color: gray">DOT</span>
+                      </div>
+                    </div>
+                    <div>
+                      <span>$7.45</span><br />
+                      <span style="color: gray">+3.21%</span>
+                    </div>
+                  </div>
+                  <hr />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="footer-container d-flex justify-content-center text-center">
+          <p>Copyright © 2026 CryptoVault. Designed by TemplateMo</p>
+        </div>
+      </section>
+    </div>
+  </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"
+  ></script>
+  <script src="./script.js"></script>
+</html>

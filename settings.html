@@ -1,0 +1,692 @@
+<!-- https://templatemo.com/live/templatemo_609_crypto_vault -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div  
+        class="offcanvas offcanvas-start"
+        id="sidebar"
+        data-bs-scroll="true"
+        data-bs-backdrop="false"
+        tabindex="-1"
+        aria-labelledby="offcanvasScrollingLabel"
+      >
+        <div class="offcanvas-body canvas-content">
+          <div class="d-flex justify-content-between align-items-center fs-5">
+            <div class="offcanvas-title d-flex align-items-center gap-2">
+              <h5 class="cv-text">CV</h5>
+              <h5 class="fs-4">Cryptovault</h5>
+            </div>
+            <button
+              type="button"
+              class="btn-close close-button bg-white"
+              data-bs-dismiss="offcanvas"
+              id="close-btn"
+              onclick="closeBtn()"
+              aria-label="Close"
+            ></button>
+          </div>
+          <p class="my-5">MAIN CONTENT</p>
+          <div
+            class="d-flex align-items-center btn border-none menu-link gap-3 mb-3"
+            onclick="dashboard()"
+          >
+            <div>
+              <i class="bi bi-grid-3x3-gap-fill text-white fs-5"></i>
+            </div>
+            <div>
+              <p class="fs-5 text-white mb-0">Dashboard</p>
+            </div>
+          </div>
+          <div
+            class="d-flex align-items-center btn border-none menu-link gap-3 mb-3"
+            id="markets"
+            onclick="markets()"
+          >
+            <div>
+              <i class="bi bi-activity fs-5 text-white"></i>
+            </div>
+            <div>
+              <p class="fs-5 text-white mb-0">Markets</p>
+            </div>
+          </div>
+
+          <div
+            class="d-flex align-items-center btn menu-link gap-3 mb-3"
+            id="wallets"
+            onclick="wallets()"
+          >
+            <div>
+              <i class="bi bi-credit-card fs-5 text-white"></i>
+            </div>
+            <div>
+              <p class="fs-5 text-white mb-0">Wallets</p>
+            </div>
+          </div>
+
+          <p class="mt-4">DASHBOARD ACCOUNT</p>
+          <div
+            class="d-flex align-items-center btn menu-link active gap-3 mt-4"
+            id="settings"
+            onclick="settings()"
+          >
+            <div>
+              <i class="bi bi-gear fs-5 text-white"></i>
+            </div>
+            <div>
+              <p class="fs-5 text-white mb-0">Settings</p>
+            </div>
+          </div>
+          <hr />
+
+          <div
+            class="d-flex btn dash-btn justify-content-between align-items-center mb-4"
+          >
+            <div class="d-flex gap-3 align-items-center">
+              <div>
+                <i class="bi bi-sun fs-5 text-white"></i>
+              </div>
+              <div class="d-flex fs-5 align-items-center">
+                <p class="text-white">Light <br />Mode</p>
+              </div>
+            </div>
+            <div class="form-check form-switch">
+              <input
+                class="form-check-input fs-3"
+                type="checkbox"
+                id="themeToggle"
+                onclick="lightmode()"
+              />
+            </div>
+          </div>
+          <div
+            class="d-flex align-items-center btn menu-link logout-btn gap-3 mb-3"
+            id="logout"
+            onclick="logout()"
+          >
+            <div>
+              <i class="bi bi-box-arrow-right logout-text fs-5 text-white"></i>
+            </div>
+            <div>
+              <p class="fs-5 text-white mb-0">Logout</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="settings-container">
+        <button
+        class="btn btn-dark toggle-btn"
+        type="button" id="toggle-btn"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#sidebar"
+        aria-controls="sidebar"
+        onclick="togbtn()"
+      >
+        <i class="bi bi-list fs-3"></i>
+      </button>
+        <h3 class="mt-5 mt-md-0 pt-2">Settings</h3>
+        <p class="text-gray">Manage your account preferences and security</p>
+        <div class="settings">
+          <button
+            class="btn btn-lg settings-btn mb-2"
+            onclick="settingsPage('profile')"
+          >
+            Profile
+          </button>
+          <button
+            class="btn btn-lg settings-btn mb-2"
+            onclick="settingsPage('security')"
+          >
+            Security
+          </button>
+          <button
+            class="btn btn-lg settings-btn mb-2"
+            onclick="settingsPage('notifications')"
+          >
+            Notifications
+          </button>
+          <button
+            class="btn btn-lg settings-btn mb-2"
+            onclick="settingsPage('preferences')"
+          >
+            preferences
+          </button>
+          <button
+            class="btn btn-lg settings-btn mb-2"
+            onclick="settingsPage('connected')"
+          >
+            Connected
+          </button>
+        </div>
+        <hr />
+        <!-- ----------------Security-container--------------------- -->
+        <div id="security" class="security-settings security-page">
+          <div class="row">
+            <div class="col-12 col-md-12">
+              <div class="card mt-2">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <h3>Security Settings</h3>
+                    <p class="text-gray">
+                      Manage your account security and authentication methods
+                    </p>
+                  </div>
+                  <div class="card mt-2">
+                    <div class="card-body d-flex justify-content-between">
+                      <div class="d-flex gap-3">
+                        <div class="settings-icon">
+                          <i class="bi bi-bag"></i>
+                        </div>
+                        <div>
+                          <span>Password</span><br />
+                          <span class="text-green"
+                            >Last changed 30 days ago</span
+                          >
+                        </div>
+                      </div>
+                      <div class="settings-password">
+                        <button class="btn add-btn" onclick="forgetPassword(event)">Change Password</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card mt-2">
+                    <div class="card-body d-flex justify-content-between">
+                      <div class="d-flex gap-3">
+                        <div class="settings-icon">
+                          <i class="bi bi-square"></i>
+                        </div>
+                        <div>
+                          <span>Two-Factor Authentication</span><br />
+                          <span class="text-green"
+                            >Enabled via Authenticator App</span
+                          >
+                        </div>
+                      </div>
+                      <div class="settings-password">
+                        <button class="btn add-btn">Manage</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card mt-2">
+                    <div class="card-body d-flex justify-content-between">
+                      <div class="d-flex gap-3">
+                        <div class="settings-icon">
+                          <i class="bi bi-shield"></i>
+                        </div>
+                        <div>
+                          <span>Biometric Login</span><br />
+                          <span class="text-gray">Not configured</span>
+                        </div>
+                      </div>
+                      <div class="settings-enable">
+                        <button class="btn">Enable</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card mt-2">
+                    <div class="card-body d-flex justify-content-between">
+                      <div class="d-flex gap-3">
+                        <div class="settings-icon">
+                          <i class="bi bi-clock"></i>
+                        </div>
+                        <div>
+                          <span>Active Sessions</span><br />
+                          <span class="text-green"
+                            >3 devices currently logged in</span
+                          >
+                        </div>
+                      </div>
+                      <div class="settings-password">
+                        <button class="btn add-btn">View All</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-12">
+                <div class="card mt-3 p-3">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between mb-3">
+                      <h3>Danger Zone</h3>
+                      <p class="text-gray">
+                        Irreversible actions for your account
+                      </p>
+                    </div>
+                    <button class="btn btn-lg danger-btn mb-2">
+                      Delete Account
+                    </button>
+                    <button class="btn btn-lg danger-btn mb-2">
+                      Export All Data
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- profile-container -->
+        <div id="profile" class="profile-container security-page">
+          <div class="container p-1 p-md-2">
+            <div class="card mt-3 p-md-4">
+              <div class="card-body">
+                <div class="d-flex align-items-center gap-4 mb-3">
+                  <div class="profile">
+                    <h1 class="text-dark">AM</h1>
+                    <div class="edit">
+                      <i class="bi bi-pencil-square"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <span class="fs-3">Alex Morgan</span><br />
+                    <span class="text-gray">alex.morgan@email.com</span><br />
+                    <span class="btn trader-btn mt-2">Pro Trader</span><br />
+                  </div>
+                </div>
+                <form action="">
+                  <div class="row">
+                    <div class="col-12 col-md-6 mb-4">
+                      <label class="form-label" for="name">First Name</label>
+                      <input
+                        type="text"
+                        class="form-control search p-4 profile-input"
+                        name="name"
+                        id="first-name"
+                        placeholder="Alex"
+                      />
+                    </div>
+                    <div class="col-12 col-md-6 mb-4">
+                      <label class="form-label" for="last-name"
+                        >Last Name</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control search p-4 profile-input"
+                        name="last-name"
+                        id="last-name"
+                        placeholder="Morgan"
+                      />
+                    </div>
+                    <div class="col-12 col-md-6 mb-4">
+                      <label class="form-label" for="last-name"
+                        >Email Address</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control search p-4 profile-input"
+                        name="email-address"
+                        id="email-address"
+                        placeholder="alex.morgan@email.com"
+                      />
+                    </div>
+                    <div class="col-12 col-md-6 mb-4">
+                      <label class="form-label" for="last-name"
+                        >Phone Number</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control search p-4 profile-input"
+                        name="phone-number"
+                        id="phone-number"
+                        placeholder="+1 (555) 123-4567"
+                      />
+                    </div>
+                    <div class="col-12 mb-4">
+                      <label for="last-name" class="form-label">Bio</label>
+                      <input
+                        type="text"
+                        class="form-control search p-4 profile-input"
+                        name="bio-name"
+                        id="bio-name"
+                        placeholder="Crypto enthusiast and day trader since 2017"
+                      />
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-lg copy-btn mt-3 me-2" onclick="saveChanges()">
+                    Save Changes
+                  </button>
+                  <button class="btn btn-lg share-btn mt-3">Cancel</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- -----------------Notifications-preferences------------------------- -->
+        <div id="notifications" class="notification-container security-page">
+          <div class="container">
+            <div class="card mt-3">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h3 class="mb-3">Notification Preferences</h3>
+                  <p class="text-gray">
+                    Choose how you want to receive updates
+                  </p>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <span>Price Alerts</span><br />
+                    <span class="text-gray"
+                      >Get notified when prices hit your targets</span
+                    >
+                  </div>
+                  <div class="form-check form-switch">
+                    <input
+                      class="form-check-input fs-3"
+                      type="checkbox"
+                      id="themeToggle"
+                    />
+                  </div>
+                </div>
+                <hr />
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <span>Transaction Updates</span><br />
+                    <span class="text-gray"
+                      >Receive alerts for deposits, withdrawals, and trades
+                    </span>
+                  </div>
+                  <div class="form-check form-switch">
+                    <input
+                      class="form-check-input fs-3"
+                      type="checkbox"
+                      id="themeToggle"
+                    />
+                  </div>
+                </div>
+                <hr />
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <span>Security Alerts</span><br />
+                    <span class="text-gray"
+                      >Important security notifications and login alerts</span
+                    >
+                  </div>
+                  <div class="form-check form-switch">
+                    <input
+                      class="form-check-input fs-3"
+                      type="checkbox"
+                      id="themeToggle"
+                    />
+                  </div>
+                </div>
+                <hr />
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <span>Marketing Emails</span><br />
+                    <span class="text-gray"
+                      >News, updates, and promotional offers</span
+                    >
+                  </div>
+                  <div class="form-check form-switch">
+                    <input
+                      class="form-check-input fs-3"
+                      type="checkbox"
+                      id="themeToggle"
+                    />
+                  </div>
+                </div>
+                <hr />
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <span>Weekly Report</span><br />
+                    <span class="text-gray"
+                      >Portfolio performance summary every week</span
+                    >
+                  </div>
+                  <div class="form-check form-switch">
+                    <input
+                      class="form-check-input fs-3"
+                      type="checkbox"
+                      id="themeToggle"
+                    />
+                  </div>
+                </div>
+                <hr />
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <span>Push Notifications</span><br />
+                    <span class="text-gray"
+                      >Enable browser push notifications
+                    </span>
+                  </div>
+                  <div class="form-check form-switch">
+                    <input
+                      class="form-check-input fs-3"
+                      type="checkbox"
+                      id="themeToggle"
+                    />
+                  </div>
+                </div>
+                <hr />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- -----------------------Display-preferences-------------------------- -->
+        <div
+          id="preferences"
+          class="display-preferences-container security-page"
+        >
+          <div class="container">
+            <div class="card p-2 mt-2">
+              <div class="card-body">
+                <div class="d-flex justify-content-between mb-3">
+                  <h3>Display Preferences</h3>
+                  <p class="text-gray">
+                    Customize how the app looks and behaves
+                  </p>
+                </div>
+                <form action="">
+                  <div class="row">
+                    <div class="col-12 col-md-6 mb-3">
+                      <label for="dollar" class="form-label">Currency</label>
+                      <select
+                        name="currency-dollar"
+                        class="form-control search p-4"
+                        id="currency-dollar"
+                      >
+                        <option value="USD-US Dollar">USD-US Dollar</option>
+                        <option value="EUR-Euro">EUR-Euro</option>
+                        <option value="GBP-British Pound">
+                          GBP-British Pound
+                        </option>
+                        <option value="JPY-Japanese Yen">
+                          JPY-Japanese Yen
+                        </option>
+                      </select>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <label for="dollar" class="form-label">Language</label>
+                      <select
+                        name="currency-dollar"
+                        class="form-select search p-4"
+                        id="currency-dollar"
+                      >
+                        <option value="English">English</option>
+                        <option value="Spanish">Spanish</option>
+                        <option value="French">French</option>
+                        <option value="German">German</option>
+                      </select>
+                    </div>
+                    <div class="col-12 col-md-6 mb-3">
+                      <label for="dollar" class="form-label">Time Zone</label>
+                      <select
+                        name="currency-dollar"
+                        class="form-select search p-4"
+                        id="currency-dollar"
+                      >
+                        <option value="">Eastern Time(ET)</option>
+                        <option value="">Pacific Time(PT)</option>
+                        <option value="">UTC</option>
+                        <option value="">GMT</option>
+                      </select>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <label for="dollar" class="form-label">Date Format</label>
+                      <select
+                        name="currency-dollar"
+                        class="form-select search p-4"
+                        id="currency-dollar"
+                      >
+                        <option value="">MM/DD/YYYY</option>
+                        <option value="">DD/MM/YYYY</option>
+                        <option value="">YYYY-MM-DD</option>
+                      </select>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <div>
+                        <span>Dark Mode</span><br />
+                        <span class="text-gray"
+                          >Use dark theme for the interface
+                        </span>
+                      </div>
+                      <div class="form-check form-switch">
+                        <input
+                          class="form-check-input fs-3"
+                          type="checkbox"
+                          id="themeToggle"
+                        />
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="d-flex justify-content-between">
+                      <div>
+                        <span>Compact View</span><br />
+                        <span class="text-gray"
+                          >Show more data with smaller elements
+                        </span>
+                      </div>
+                      <div class="form-check form-switch">
+                        <input
+                          class="form-check-input fs-3"
+                          type="checkbox"
+                          id="themeToggle"
+                        />
+                      </div>
+                    </div>
+                    <hr />
+                  </div>
+                  <button class="btn btn-lg copy-btn mt-3 me-2">
+                    Save Preferences
+                  </button>
+                  <button class="btn btn-lg share-btn mt-3">
+                    Reset to Default
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ----------------Connected-Exchanges------------------- -->
+        <div id="connected" class="connected-exchanges security-page">
+          <div class="container">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h3 class="mb-3">Connected Exchanges</h3>
+                  <p class="text-gray">
+                    Link your exchange accounts for seamless trading
+                  </p>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <div class="d-flex gap-3">
+                    <div class="symbol symbol-doll fw-bold">🦊</div>
+                    <div>
+                      <span>MetaMask</span><br />
+                      <span class="text-green">Connected • 0x742d...5f83</span>
+                    </div>
+                  </div>
+                  <div class="settings-password">
+                    <button class="btn add-btn">Disconnect</button>
+                  </div>
+                </div>
+                <hr />
+                <div class="d-flex justify-content-between">
+                  <div class="d-flex gap-3">
+                    <div class="symbol symbol-c fw-bold">C</div>
+                    <div>
+                      <span>Coinbase</span><br />
+                      <span class="text-green"
+                        >Connected • alex.m@email.com</span
+                      >
+                    </div>
+                  </div>
+                  <div class="settings-password">
+                    <button class="btn add-btn">Disconnect</button>
+                  </div>
+                </div>
+                <hr />
+                <div class="d-flex justify-content-between">
+                  <div class="d-flex gap-3">
+                    <div class="symbol symbol-b fw-bold">B</div>
+                    <div>
+                      <span>Binance</span><br />
+                      <span>Not Connected</span>
+                    </div>
+                  </div>
+                  <div class="settings-enable">
+                    <button class="btn add-btn">Connect</button>
+                  </div>
+                </div>
+                <hr />
+              </div>
+            </div>
+            <button class="btn btn-lg copy-btn mt-3">+ Add Exchange</button>
+            <div class="card mt-2">
+              <div class="card-body">
+                <div class="d-flex justify-content-between">
+                  <h3 class="mb-3">API Keys</h3>
+                  <p class="text-gray">
+                    Manage your API access for third-party integrations
+                  </p>
+                </div>
+                <form action="">
+                  <input
+                    type="api"
+                    class="form-control text-white search p-4"
+                    name="api"
+                    id="api"
+                    value="cv_live_xxxxxxxxxxxxxxxxxxxxxxxx"
+                    readonly
+                  />
+                </form>
+                <button class="btn btn-lg text-white border-white mt-4">
+                  Regenerate Key
+                </button>
+                <button class="btn btn-lg text-white border-white mt-4">
+                  View Documentation
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="footer-container d-flex justify-content-center text-center">
+          <p>Copyright © 2026 CryptoVault. Designed by TemplateMo</p>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
